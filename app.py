@@ -4,7 +4,6 @@ from regex import D
 import streamlit as st
 from langchain.chat_models.base import init_chat_model
 from langchain_core.prompts.prompt import PromptTemplate
-from langchain_core.messages.ai import AIMessage
 
 
 st.title("Assignment07")
@@ -52,6 +51,7 @@ with st.sidebar:
     OPENAI_API_KEY = st.text_input(label="OPENAI API KEY")
     difficulty = st.radio("Degree of Difficulty", ["Easy", "Hard"], index=0)    
     topic = st.text_input("Input a topic about quiz you want to create")
+    st.write("https://github.com/animasana/assignment07/blob/main/app.py")
 
 
 llm = init_chat_model(
@@ -84,7 +84,7 @@ def run_quiz_chain(topic: str, difficulty: str):
     )
 
 
-if not topic:
+if not (topic and OPENAI_API_KEY and difficulty):
     st.markdown(
         """
         Welcome to Assignment07!!!        
