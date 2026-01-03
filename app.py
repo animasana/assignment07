@@ -1,4 +1,5 @@
 import json
+from openai import api_key
 from regex import D
 import streamlit as st
 from langchain.chat_models.base import init_chat_model
@@ -47,9 +48,15 @@ function = {
     },
 }
 
+with st.sidebar:
+    OPENAI_API_KEY = st.text_input(label="OPENAI API KEY")
+    difficulty = st.radio("Degree of Difficulty", ["Easy", "Hard"], index=0)    
+    topic = st.text_input("Input a topic about quiz you want to create")
+
 
 llm = init_chat_model(
-    model=("openai:gpt-5-nano")
+    model=("openai:gpt-5-nano"),
+    api_key=OPENAI_API_KEY,
 ).bind(
     function_call={
         "name": "create_quiz"
@@ -75,13 +82,6 @@ def run_quiz_chain(topic: str, difficulty: str):
             "difficulty": difficulty.upper()
         }
     )
-
-
-with st.sidebar:
-    difficulty = st.radio("Degree of Difficulty", ["Easy", "Hard"], index=0)    
-    topic = st.text_input("Input a topic about quiz you want to create")
-    if not (difficulty and topic):
-        st.stop()
 
 
 if not topic:
