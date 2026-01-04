@@ -71,7 +71,7 @@ llm = init_chat_model(
 def run_quiz_chain(topic: str, difficulty: str):
     prompt = PromptTemplate.from_template(
         """
-        Make five {difficulty} level quizz questions about {topic}.
+        Make five {difficulty} level quiz questions about {topic}.
         Ensure The order of the correct answer is ARBITRARY.
         """
     )
