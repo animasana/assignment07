@@ -72,7 +72,7 @@ def run_quiz_chain(topic: str, difficulty: str):
     prompt = PromptTemplate.from_template(
         """
         Make five {difficulty} level quizz questions about {topic}.
-        Ensure the answer choices are in a random order.
+        Ensure The order of the correct answer is ARBITRARY.
         """
     )
     
@@ -89,10 +89,8 @@ if not (topic and OPENAI_API_KEY and difficulty):
     st.markdown(
         """
         Welcome to Assignment07!!!        
-        I will make a quiz from Wikipedia articles or files you upload         
-        to test your knowledge and help you study.
-        
-        Get started by uploading a file or searching on Wikipedia in the sidbar.
+        I will make a quiz from FUNCTION CALLING to test your knowledge and help you study.        
+        Get started by filling api_key, difficulty, a topc.
         """
     )
 else:
