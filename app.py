@@ -90,7 +90,7 @@ if not (topic and OPENAI_API_KEY and difficulty):
         """
         Welcome to Assignment07!!!        
         I will make a quiz from FUNCTION CALLING to test your knowledge and help you study.        
-        Get started by filling api_key, difficulty, a topc.
+        Get started by filling api_key, a topc and selecting difficulty.
         """
     )
 else:
